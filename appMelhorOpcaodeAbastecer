@@ -1,0 +1,176 @@
+import 'dart:io';
+import 'dart:math';
+
+main(){
+  double gasolina;
+  double etanol;
+
+  print("digite os precos da gasolina e do etanol respectivamente");
+
+  gasolina = double.parse(stdin.readLineSync()!);
+  etanol = double.parse(stdin.readLineSync()!);
+  calculoFinal(calculoPreco(gasolina, etanol));
+  
+
+}
+
+
+calculoPreco(x, y){
+  double valor = y/x;
+  return valor;  
+}
+
+calculoFinal(valor){
+  if(valor <= 0.70){
+    print("Melhor abastecer com Etanol");
+  }
+  else if(valor > 0.70){
+    print("melhor abastecer com gasolina");
+  }
+}
+
+/////////////////////////////////////////////////////////
+
+import 'dart:io';
+import 'dart:math';
+
+main() {
+  var resultado;
+  print("digite a tabuada desejada: ");
+  var textTabuada = stdin.readLineSync();
+  print("digite o limite da tabuada");
+  var textLimite = stdin.readLineSync();
+
+  var tabuada = int.parse(textTabuada!);
+  var limite = int.parse(textLimite!);
+
+  for (int i = 1; i <= limite; i++) {
+    resultado = tabuada * i;
+    print("$tabuada x $i = $resultado");
+  }
+}
+
+////////////////////////////////////////////////////////
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  print('digite um Ano');
+  var ano = int.parse(stdin.readLineSync()!);
+
+  print('digite um mes');
+  var meses = int.parse(stdin.readLineSync()!);
+
+  print('digite um dia');
+  var dias = int.parse(stdin.readLineSync()!);
+
+  var total_dias = (ano * 365) + (meses * 30) + dias;
+
+  print('$total_dias');
+}
+///////////////////////////////////////////////////////
+
+import 'dart:io'
+
+void main(){
+
+	num a = 10;
+	num b = 20;
+	
+	bool testeComp = (a > b);
+	print("Teste 1: $a maior que $b: $testeComp");
+	
+	testeComp = (a < b);
+	print("Teste 2: $a menor que $b: $testeComp");
+	
+	testeComp = (a == b);
+	print("Teste 3: $a igual a $b: $testeComp");
+	
+	testeComp = (a != b);
+	print("Teste 4: $a diferente de $b: $testeComp");
+	
+	testeComp = (a >= b);
+	print("Teste 5: $a maior ou igual a $b: $testeComp");
+	
+	testeComp = (a <= b);
+	print("Teste 6: $a menor ou igual a $b: $testeComp");
+
+////////////////////////////////////////////////////////
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  print("Insira suas 4 notas");
+  double media = 0;
+  double soma = 0;
+
+  for (int i = 1; i <= 4; i++) {
+    print("insira sua nota $i");
+
+    soma += double.parse(stdin.readLineSync()!);
+  }
+
+  media = soma / 4;
+  print('$media');
+}
+//////////////////////////////////////////////////////////
+
+import 'dart:io';
+import 'dart:math';
+
+main() {
+  print("Insira o valor que gostaria de somar a partir");
+
+  var textvalor = stdin.readLineSync();
+
+  int valor = int.parse(textvalor!);
+  int soma = 0;
+
+  for (int i = 1; i <= valor; i++) {
+    soma += i;
+  }
+
+  print(soma);
+}
+/////////////////////////////////////////////////////////
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  print("Insira o valor que voce queira descobrir o fatorial: ");
+  var textvalor = stdin.readLineSync();
+
+  int valor = int.parse(textvalor!);
+  int soma = 1;
+
+  for (int i = 1; i <= valor; i++) {
+    soma *= i;
+  }
+
+  print(soma);
+}
+////////////////////////////////////////////////////////////
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    title: "Frase do Dia",
+    home: Container(
+      margin: EdgeInsets.only(top:50),
+      padding: EdgeInsets.only(top: 50),
+      decoration: BoxDecoration(
+        border: Border.all(width: 3, color: Colors.white)
+      ),
+      child: Column(
+        children: [
+          Text("T1"),
+          Text("T2"),
+          Text("T3"),
+        ],
+      ),
+    ),
+  ));
+}
