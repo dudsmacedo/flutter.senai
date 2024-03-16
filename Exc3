@@ -1,0 +1,177 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'CampoTexto.dart';
+import 'CheckBox.dart';
+
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: CheckBox(),
+  ));
+}
+--------------------------------------------------
+import 'package:flutter/material.dart';
+
+class CampoTexto extends StatefulWidget {
+  const CampoTexto({Key? key}) : super(key: key);
+
+  @override
+  State<CampoTexto> createState() => _CampoTextoState();
+}
+
+class _CampoTextoState extends State<CampoTexto> {
+
+  TextEditingController _campotexto = TextEditingController();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Entrada de dados"),
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Digite um valor"
+                ),
+                maxLength: 5,
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.red
+                ),
+                controller: _campotexto,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: (){
+                  print("Digitado: " + _campotexto.text);
+                },
+                child: Text("Salvar")
+            )
+          ],
+        )
+    );
+  }
+}
+
+---------------------------------------------------------------------
+import 'package:flutter/material.dart';
+
+class CheckBox extends StatefulWidget {
+  const CheckBox({Key? key}) : super(key: key);
+
+  @override
+  State<CheckBox> createState() => _CheckBoxState();
+}
+
+class _CheckBoxState extends State<CheckBox> {
+
+  bool _comidabrasileira = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("CheckBox"),
+      ),
+      body: Column(
+        children: [
+          CheckboxListTile(
+              value: _comidabrasileira,
+              title: Text("Comida Brasileira"),
+              subtitle: Text("A melhor comida"),
+              onChanged: (bool? valor){
+                setState((){
+                  _comidabrasileira = valor!;
+                });
+              }
+          )
+        ],
+      ),
+    );
+  }
+}
+
+-----------------------------------------------------------------
+
+import 'package:flutter/material.dart';
+
+class CampoTexto extends StatefulWidget {
+  const CampoTexto({Key? key}) : super(key: key);
+
+  @override
+  State<CampoTexto> createState() => _CampoTextoState();
+}
+
+class _CampoTextoState extends State<CampoTexto> {
+
+  TextEditingController _etanol = TextEditingController();
+  TextEditingController _gasolina = TextEditingController();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Etanol ou Gasolina"),
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Preço Etanol, ex 3.49"
+                ),
+
+                maxLength: 5,
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.red
+                ),
+                controller: _etanol,
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    labelText: "Preço gasolina, ex 3.49"
+                ),
+
+                maxLength: 5,
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.red
+                ),
+                controller: _gasolina,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: (){
+                  double valor1 = double.tryParse(_etanol.text) ?? 0.0;
+                  double valor2 = double.tryParse(_gasolina.text) ?? 0.0;
+
+                  if(valor1 < valor2){
+                    print("Etanol vale mais");
+                  }
+                  else{
+                    print("Gasosa vale mais");
+                  }
+                },
+                child: Text("Salvar")
+            )
+          ],
+          
+        )
+    );
+  }
+}
